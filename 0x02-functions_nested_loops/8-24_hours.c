@@ -3,7 +3,7 @@
 /**
  * jack_bauer - prints every minute of the time
  *
- * Return: void
+ * Return: ...
  */
 
 void jack_bauer(void)
