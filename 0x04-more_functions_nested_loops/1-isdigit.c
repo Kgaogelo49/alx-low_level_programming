@@ -5,13 +5,16 @@
  *
  * @c: The digit to be checked
  *
- * Return: 1 if it's a digit, or 0 for anything else
+ * Return: 1 if it a digit and 0 for anything else
  */
 int _isdigit(int c)
 {
-	if (c >= '0' && c <= '9')
+	if (c >= 48 && c <= 57)
 	{
-	return 1;
+	return (1);
 	}
-	return 0;
+	else
+	{
+	return (0);
+	}
 }
