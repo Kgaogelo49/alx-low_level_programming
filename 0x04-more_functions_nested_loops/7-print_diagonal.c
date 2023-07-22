@@ -1,13 +1,13 @@
 #include "main.h"
 
 /**
- * print_diagonal - printing lins diagonal
+ * print_diagonal - printing lines diagonal
  * @n: input variable
  *
  * Return: void
  */
 
-vid print_diagonal(int n)
+void print_diagonal(int n)
 {
 	int i, j;
 
@@ -15,7 +15,7 @@ vid print_diagonal(int n)
 	{
 		_putchar('\n');
 	}
-	for (i = 0; i < n; n++)
+	for (i = 0; i < n; i++)
 	{
 		for (j = 0; j < i; j++)
 		{
