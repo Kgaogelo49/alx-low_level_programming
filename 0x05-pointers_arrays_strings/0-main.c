@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 /**
- * main - check the code 
+ * main - check the code that takes pointer to int and updates to new value.
  *
  * Return: Always 0.
  */
