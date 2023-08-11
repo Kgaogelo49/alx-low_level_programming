@@ -49,20 +49,3 @@ int **alloc_grid(int width, int height)
 
 	return (array);
 }
-/**
- * free_array - free the memory allocated for an array
- * @array: 2D array
- * @height: the columns of the array
- *
- * Return: void
- */
-void free_array(int **array, int height)
-{
-	int i;
-
-	for (i = 0; i < height; i++)
-	{
-	free(array[i]);
-	}
-	free(array);
-}
