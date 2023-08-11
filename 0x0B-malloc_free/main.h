@@ -9,5 +9,6 @@ int **alloc_grid(int width, int height);
 void free_grid(int **grid, int height);
 int strleng(const char *str);
 char *strcopy(char *destin, const char *source);
+void free_array(int **array, int height);
 
 #endif
