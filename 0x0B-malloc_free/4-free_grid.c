@@ -3,7 +3,7 @@
 
 /**
  * free_grid - free the memory allocated for a 2D array
- * @array: pointer to the 2D array
+ * @grid: pointer to the 2D array
  * @height: the number of rows of the array
  *
  * Return: void
