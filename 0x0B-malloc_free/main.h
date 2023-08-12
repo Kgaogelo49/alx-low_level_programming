@@ -10,5 +10,7 @@ void free_grid(int **grid, int height);
 int strleng(const char *str);
 char *strcopy(char *destin, const char *source);
 void free_array(int **array, int height);
+char *argstostr(int ac, char **av);
+char **strtow(char *str);
 
 #endif
