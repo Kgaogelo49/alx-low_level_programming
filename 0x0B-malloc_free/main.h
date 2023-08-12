@@ -12,5 +12,8 @@ char *strcopy(char *destin, const char *source);
 void free_array(int **array, int height);
 char *argstostr(int ac, char **av);
 char **strtow(char *str);
+int word_len(const char *str);
+char *next_word(const char *str);
+int count_words(const char *str);
 
 #endif
