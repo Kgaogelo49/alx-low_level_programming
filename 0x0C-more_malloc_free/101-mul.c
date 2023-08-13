@@ -43,7 +43,7 @@ int string_to_ul(const char *str, unsigned long *result)
 
 	if (*endptr != '\0' || endptr == str || *result == 0)
 	{
-        return (0);
+	return (0);
 	}
 
 	return (1);
@@ -83,7 +83,8 @@ int main(int argc, char *argv[])
 	if (result == 0)
 	{
 	_putchar('0');
-	} else
+	}
+	else
 	{
 	temp = result;
 	num_digits = 0;
@@ -95,7 +96,7 @@ int main(int argc, char *argv[])
 	num_digits++;
 	buffer = malloc((num_digits + 1) * sizeof(char));
 
-        if (buffer == NULL)
+	if (buffer == NULL)
 	{
 	_putchar('E');
 	_putchar('r');
@@ -112,7 +113,7 @@ int main(int argc, char *argv[])
 	result /= 10;
 	}
 
-        for (i = 0; i < num_digits; i++)
+	for (i = 0; i < num_digits; i++)
 	{
 	_putchar(buffer[i]);
 	}
