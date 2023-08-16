@@ -9,7 +9,7 @@
  *
  * This structure holds data about a dog, its name, age, and owner.
  */
-struct dog
+struct dog_t
 {
 	char *name;
 	float age;
