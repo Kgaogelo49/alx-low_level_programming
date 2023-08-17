@@ -14,7 +14,7 @@ int sum_them_all(const unsigned int n, ...)
 	va_list argu;
 
 	sum = 0;
-	va_start(argu,n);
+	va_start(argu, n);
 
 	if (n == 0)
 	{
@@ -23,6 +23,7 @@ int sum_them_all(const unsigned int n, ...)
 	for (i = 0; i < n; i++)
 	{
 		int m;
+
 		m = va_arg(argu, unsigned int);
 		sum += m;
 	}
