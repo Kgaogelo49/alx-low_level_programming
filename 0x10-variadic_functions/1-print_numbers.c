@@ -18,22 +18,17 @@ void print_numbers(const char *separator, const unsigned int n, ...)
 
 	va_start(argu, n);
 
-	if (separator == NULL)
-	{
-	printf(" ");
-	}
-
 	for (i = 0; i < n; i++)
 	{
 		int m;
 
 		m = va_arg(argu, int);
 
-		if (i > 0)
-		{
-			printf("%s", separator);
-		}
 		printf("%d", m);
+		if (i < n - 1 && separator != NULL)
+		{
+		printf("%s", separator);
+		}
 	}
 	va_end(argu);
 	printf("\n");
