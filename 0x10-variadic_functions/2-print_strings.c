@@ -7,7 +7,7 @@
  * print_strings - function that prints strings, followed by a new line
  * @separator: the string to be printed between the strings
  * @n: count of strings
- *
+ * @...: strings to be printed
  * Return: nothing if separator is NULL, (nil) if string is NULL
  */
 

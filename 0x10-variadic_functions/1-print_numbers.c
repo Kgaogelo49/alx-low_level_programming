@@ -7,7 +7,7 @@
  * print_numbers -  function that prints numbers, followed by a new line
  * @n: numbers to be printed
  * @separator: the string to be printed between numbers
- *
+ * @...: integers to be printed
  * Return: nothing if separator is NULL
  */
 
