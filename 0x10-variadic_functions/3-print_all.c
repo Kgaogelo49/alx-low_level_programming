@@ -12,52 +12,44 @@
 
 void print_all(const char * const format, ...)
 {
-	va_list argu;
-	int i;
-	char c;
-	char *s;
-	float f;
+	char *string, *separ = "";
+	int i = 0;
 
-	va_start(argu, format);
-	i = 0;
+	va_list arguments;
 
-	while (format && format[i])
+	va_start(arguments, format);
+
+	if (format)
 	{
-		switch (format[i])
+		while (format[i])
 		{
-		case 'c':
-		c = va_arg(argu, int);
-		printf("%c", c);
-		break;
-		case 'i':
-		printf("%d", va_arg(argu, int));
-		break;
-		case 'f':
-			f = va_arg(argu, double);
-			printf("%f", f);
-			break;
-		case 's':
-		s = va_arg(argu, char *);
-
-		if (s == NULL)
-		{
-		printf("(nil)");
+			switch (format[i])
+			{
+				case 'c':
+					printf("%s%c", separ, va_arg(arguments, int));
+					break;
+				case 'i':
+					printf("%s%d", separ, va_arg(arguments, int));
+					break;
+				case 'f':
+					printf("%s%f", separ, va_arg(arguments, double));
+					break;
+				case 's':
+					string = va_arg(arguments, char *);
+					if (!string)
+					{	string = "(nil)";
+					}
+					printf("%s%s", separ, string);
+					break;
+				default:
+					i++;
+					continue;
+			}
+			separ = ", ";
+			i++;
 		}
-		else
-		{
-		printf("%s", s);
-		}
-		break;
 	}
 
-	if ((format[i + 1]) && (format[i] == 'c' || format[i] == 'i' || format[i] == 'f' || format[i] == 's'))
-	{
-	printf(", ");
-	}
-
-	i++;
-	}
-
-	va_end(argu);
 	printf("\n");
+	va_end(arguments);
 }
