@@ -2,124 +2,119 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <ctype.h>
+#include <stdio.h>
+
+#define ERR_MSG "Error"
 
 /**
- * is_positive_integer - Checks if a string is a positive integer
- * @str: The string to be checked
+ * is_digit - function that check if a string has a non-digit char
+ * @string: string to be evaluated
  *
- * Return: 1 if the string is a positive integer, 0 otherwise
+ * Return: 0 for a non-digit , otherwise 1
  */
-int is_positive_integer(const char *str)
+int is_digit(char *string)
 {
-	if (str == NULL || *str == '\0')
-	return (0);
 
-	while (*str != '\0')
+	while (*string)
 	{
-	if (!isdigit(*str))
-	return (0);
-	str++;
+		if (*string < '0' || *string > '9')
+			return (0);
+		string++;
 	}
-
 	return (1);
 }
 
 /**
- * multiply - Multiplies two positive integers
- * @num1: The first number
- * @num2: The second number
+ * _strlen - function that returns the length of a string
+ * @string: string to evaluate
  *
- * Return: The result of the multiplication
+ * Return: length of the string
  */
-unsigned long multiply(unsigned long num1, unsigned long num2)
+int _strlen(char *string) 
 {
-	return (num1 * num2);
-}
-int string_to_ul(const char *str, unsigned long *result)
-{
-	char *endptr;
+	int len = 0;
 
-	*result = strtoul(str, &endptr, 10);
-
-	if (*endptr != '\0' || endptr == str || *result == 0)
+	while (*string)
 	{
-	return (0);
+		len++;
+		string++;
 	}
-
-	return (1);
+	return (len);
 }
+
+/**
+ * errors - handles errors for the main function
+ *
+ * Return: void
+ */
+void errors(void)
+{
+	printf("Error\n");
+	exit(98);
+}
+
+/**
+ * main - multiplies two positive numbers inputed
+ * @argc: number of arguments.
+ * @argv: array of arguments.
+ *
+ * Return: 0
+ */
+
 int main(int argc, char *argv[])
 {
+	char *s1, *s2;
+	int length1, length2, length;
 	int i;
-	unsigned long num1, num2;
-	unsigned long result;
-	char *buffer;
-	unsigned long temp;
-	int num_digits;
-
-	if (argc != 3 || !is_positive_integer(argv[1]) || !is_positive_integer(argv[2]))
+	int cary;
+	int *outcome, b = 0;
+	int num1, num2;
+	
+	s1 = argv[1];
+	s2 = argv[2];
+	if (argc != 3 || !is_digit(argv[1]) || !is_digit(argv[2]))
 	{
-	_putchar('E');
-	_putchar('r');
-	_putchar('r');
-	_putchar('o');
-	_putchar('r');
+		errors();
+	}
+	length1 = _strlen(s1);
+	length2 = _strlen(s2);
+	length = length1 + length2 + 1;
+
+	outcome = malloc(sizeof(int) * length);
+
+	if (!outcome)
+	{
+		return (1);
+	}
+	for (i = 0; i < length; i++)
+	{
+		outcome[i] = 0;
+	}
+	for (length1 = length1 - 1; length1 >= 0; length1--)
+	{
+		num1 = s1[length1] - '0';
+		cary = 0;
+
+		for (length2 = _strlen(s2) - 1; length2 >= 0; length2--)
+		{
+			num2 = s2[length2] - '0';
+			cary += outcome[length1 + length2 + 1] + (num1 * num2);
+			outcome[length1 + length2 + 1] = cary % 10;
+			cary /= 10;
+		}
+		if (cary > 0)
+			outcome[length1 + length2 + 1] += cary;
+	}
+	for (i = 0; i < length - 1; i++)
+	{
+		if (outcome[i])
+			b = 1;
+		if (b)
+			_putchar(outcome[i] + '0');
+	}
+	if (!b)
+		_putchar('0');
 	_putchar('\n');
-	return (98);
-	}
-	if (!string_to_ul(argv[1], &num1) || !string_to_ul(argv[2], &num2))
-	{
-	_putchar('E');
-	_putchar('r');
-	_putchar('r');
-	_putchar('o');
-	_putchar('r');
-	_putchar('\n');
-	return (98);
-	}
-
-	result = multiply(num1, num2);
-
-	if (result == 0)
-	{
-	_putchar('0');
-	}
-	else
-	{
-	temp = result;
-	num_digits = 0;
-
-	while (temp > 0)
-	{
-	temp /= 10;
-	}
-	num_digits++;
-	buffer = malloc((num_digits + 1) * sizeof(char));
-
-	if (buffer == NULL)
-	{
-	_putchar('E');
-	_putchar('r');
-	_putchar('r');
-	_putchar('o');
-	_putchar('r');
-	_putchar('\n');
-	return (98);
-	}
-
-	for (i = num_digits - 1; i >= 0; i--)
-	{
-	buffer[i] = result % 10 + '0';
-	result /= 10;
-	}
-
-	for (i = 0; i < num_digits; i++)
-	{
-	_putchar(buffer[i]);
-	}
-	free(buffer);
-	}
-	_putchar('\n');
-
+	free(outcome);
 	return (0);
 }
