@@ -30,7 +30,7 @@ int is_digit(char *string)
  *
  * Return: length of the string
  */
-int _strlen(char *string) 
+int _strlen(char *string)
 {
 	int len = 0;
 
@@ -69,7 +69,7 @@ int main(int argc, char *argv[])
 	int cary;
 	int *outcome, b = 0;
 	int num1, num2;
-	
+
 	s1 = argv[1];
 	s2 = argv[2];
 	if (argc != 3 || !is_digit(argv[1]) || !is_digit(argv[2]))
